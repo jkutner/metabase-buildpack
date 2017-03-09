@@ -17,6 +17,11 @@ export_env_dir() {
 
 export_env_dir $3
 
+mkdir -p target/uberjar/
+
+METABASE_JAR="target/uberjar/metabase.jar"
+METABASE_URL="http://downloads.metabase.com/${METABASE_VERSION:-"v0.22.2"}/metabase.jar"
+
 echo -n "-----> Downloading Metabase... "
-curl -s --retry 3 -o metabase.jar -L http://downloads.metabase.com/${METABASE_VERSION:-"v0.22.2"}/metabase.jar
+curl -s --retry 3 -o $METABASE_JAR -L $METABASE_URL
 echo "done"
